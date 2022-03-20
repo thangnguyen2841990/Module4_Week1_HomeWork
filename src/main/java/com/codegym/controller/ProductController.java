@@ -36,6 +36,13 @@ public class ProductController {
         modelAndView.addObject("product",product);
         return modelAndView;
     }
+    @GetMapping("/view/{id}")
+    private ModelAndView showProductDetails(@PathVariable int id){
+        Product product = this.productService.findProductById(id);
+        ModelAndView modelAndView = new ModelAndView("view");
+        modelAndView.addObject("product",product);
+        return modelAndView;
+    }
     @GetMapping("/delete/{id}")
     private ModelAndView showFormDelete(@PathVariable int id){
         Product product = this.productService.findProductById(id);
